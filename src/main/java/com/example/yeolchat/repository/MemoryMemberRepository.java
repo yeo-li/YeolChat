@@ -9,6 +9,7 @@ import java.util.*;
 public class MemoryMemberRepository {
     private final List<String> members = new LinkedList<>();
 
+
     public void save(String userName) {
         members.add(userName);
     }
@@ -16,6 +17,5 @@ public class MemoryMemberRepository {
     public boolean isMember(String userName){
         return members.contains(userName);
     }
-
 
 }

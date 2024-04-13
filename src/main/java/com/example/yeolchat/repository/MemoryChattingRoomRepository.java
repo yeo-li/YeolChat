@@ -12,7 +12,7 @@ public class MemoryChattingRoomRepository {
     private Map<Long, LinkedList<String>> chattingRooms = new HashMap<>();
     private Long RoomId = 0L;
 
-    public void createCattingRoom(String userName) {
+    public void createChattingRoom(String userName) {
         LinkedList<String> subscribers = new LinkedList<>();
         subscribers.add(userName);
 
