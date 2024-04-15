@@ -2,97 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>YeolChat - Demo</title>
-    <style>
-
-    </style>
+    <title>YeolChat - Demo version 2</title>
 </head>
 <body>
-<div class="container" id="container">
+<div id="ChatList"></div>
+<a href="/craete">채팅방 참여 또는 생성</a>
 
-    <h1 id="title_room">YeolChat - Demo version</h1>
 
-    <div id="chatting" class="chatting">
-    </div>
-
-    <div id="yourMsg">
-        <table class="inputTable">
-            <tr>
-                <th>메시지</th>
-                <th><input id="msg" placeholder="보내실 메시지를 입력하세요."></th>
-                <th><button onclick="send()" id="sendBtn">보내기</button></th>
-            </tr>
-        </table>
-    </div>
-
-</div>
-
-<!--TODO 이 링크들이 꼭 필요한가?-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script scr="./app.js"></script>
 <script>
-    const userId = window.prompt("이름을 입력해주세요");
-
     $.ajax({
-        url: "/data", // 요청할 URL
-        type: "GET",      // HTTP 요청 메서드
+        url: "/Login", // 요청할 URL
+        type: "POST",      // HTTP 요청 메서드
         success: function(data) { // 성공 시 처리할 콜백 함수
-            $('#chatting').append(data);
+            // 회원 조회 했을 때, DB에 이름이 있으면 채팅방 목록 반환, 없으면 "채팅방 참여 또는 생성" 링크 생성
+
         },
         error: function(xhr, status, error) { // 실패 시 처리할 콜백 함수
             console.error("오류 발생:", status, error);
         }
     });
-
-    function connect() {
-        var socket = new SockJS("/chatting");
-        stompClient = Stomp.over(socket);
-
-        stompClient.connect({}, function() {
-                sub = stompClient.subscribe('/topic/roomId', function (e) {
-                    showMessage(JSON.parse(e.body));
-                });
-            }, function (e){
-                alert('error!');
-            }
-        );
-    }
-
-    connect();
-
-    $('#msg').keypress(function(e){
-        if(e.keyCode === 13) send();
-    });
-
-
-    function showMessage(data) {
-        $('#chatting').append(`<p>{sender: ${data.sender}, message: ${data.message}, sendTime: ${data.sendTime}}</p>`);
-    }
-
-
-    function send() {
-        function getFormatTime(date) {
-            let hh = date.getHours();
-            hh = hh >= 10 ? hh : '0' + hh;
-            let mm = date.getMinutes();
-            mm = mm >= 10 ? mm : '0' + mm;
-
-            return hh + ':' + mm;
-        }
-
-        const sendTime = getFormatTime(new Date());
-
-        data = {
-            'sender' : userId,
-            'message' : $('#msg').val(),
-            'sendTime' : sendTime
-        };
-
-        stompClient.send("/app/chat/send", {}, JSON.stringify(data));
-        $('#msg').val('');
-    }
 </script>
 </body>
 </html>

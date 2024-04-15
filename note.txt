@@ -1,0 +1,20 @@
+@Service
+1. LoginService
+
+2. ChatRoomService
+
+3. MemberService
+
+
+@Controller
+1. ChatRoomController
+
+2. LoginController
+
+3. StompController
+
+캐쉬를 저장한다 치겠슴.
+1. 요청을 보낸다는 행위를 하면 좀 더 편하지 않나
+2. 버튼을 누르면 url을 보내는게 아니라 요청을 보냄????
+3. 이게 api인가....?
+4.

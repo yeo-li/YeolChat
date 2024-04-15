@@ -1,4 +1,4 @@
-package com.example.yeolchat.repository;
+package com.example.yeolchat.chatroom;
 
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class MemoryChattingRoomRepository {
+public class MemoryChatRoomRepository {
     private Map<Long, LinkedList<String>> chattingRooms = new HashMap<>();
     private Long RoomId = 0L;
 

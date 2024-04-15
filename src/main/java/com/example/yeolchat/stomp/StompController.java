@@ -1,6 +1,6 @@
-package com.example.yeolchat.controller;
+package com.example.yeolchat.stomp;
 
-import com.example.yeolchat.service.ChatService;
+import com.example.yeolchat.chatroom.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;

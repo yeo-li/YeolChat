@@ -1,4 +1,4 @@
-package com.example.yeolchat.configuration;
+package com.example.yeolchat.stomp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -22,4 +22,6 @@ public class StompConfig implements WebSocketMessageBrokerConfigurer {
         registry.enableSimpleBroker("/topic", "queue");
         registry.setApplicationDestinationPrefixes("/app");
     }
+
+    public void
 }

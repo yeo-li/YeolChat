@@ -1,4 +1,4 @@
-package com.example.yeolchat.repository;
+package com.example.yeolchat.member;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,13 +9,15 @@ import java.util.*;
 public class MemoryMemberRepository {
     private final List<String> members = new LinkedList<>();
 
-
-    public void save(String userName) {
+    public void saveMember(String userName) {
         members.add(userName);
     }
 
-    public boolean isMember(String userName){
-        return members.contains(userName);
+    public void removeMember(String userName) {
+        members.remove(userName);
     }
 
+    public List<String> getMembers() {
+        return members;
+    }
 }

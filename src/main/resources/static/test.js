@@ -1,4 +1,4 @@
-// todo endpoint index.html 가 아니라 chatting으로 만들고 싶음
+// todo endpoint reference.html 가 아니라 chatting으로 만들고 싶음
 // TODO window.pronmpt()가 뭔지 공부해봅시다.
 var userId = window.prompt("사용자 닉네임?");
 
